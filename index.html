@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="js" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="parser.js"></script>
+
+    <title>Datetime Parser</title>
+  </head>
+  <body>
+    <input type="text" name="text-input" value="" placeholder="input datetime"></input>
+    <input type="button" name="input-button", value="parse"></input>
+    <h2 id="output_range">Output</h2>
+  </body>
+  <script type="text/javascript">
+    $('input:button').on('click', function(){
+      console.log($('input:text').val());
+      let result = extractDateTimePrimitive($('input:text').val());
+      $('#output_range').text(result);
+    })
+  </script>
+</html>
