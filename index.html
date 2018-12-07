@@ -11,14 +11,18 @@
     <title>Datetime Parser</title>
   </head>
   <body>
-    <input type="text" name="text-input" value="" placeholder="input datetime"></input>
+    <input type="text" name="text-input" id="first_text_input" value="" placeholder="input datetime"></input>
+    <input type="text" name="text-input" id="second_text_input" value="" placeholder="input datetime"></input>
+
     <input type="button" name="input-button", value="parse"></input>
+
     <h2 id="output_range">Output</h2>
   </body>
   <script type="text/javascript">
+    // 2つ入力して差分を取得
     $('input:button').on('click', function(){
       console.log($('input:text').val());
-      let result = extractDateTimePrimitive($('input:text').val());
+      let result = extractDateTimePrimitive($('#first_text_input').val(), $('#second_text_input').val());
       $('#output_range').text(result);
     })
   </script>
