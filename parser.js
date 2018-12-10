@@ -1,7 +1,4 @@
-function extractDateTimePrimitive(first_str, second_str){
-  const date_object_first = new Date(first_str);
-  const date_object_second = new Date(second_str);
-  // let date_diff = first_str - second_str;
+function extractDateTimePrimitive(date_object_first, date_object_second){
   let flag = 0;
   if (date_object_first.getMilliseconds() !== date_object_second.getMilliseconds()) {
     flag = 0;
@@ -24,14 +21,13 @@ function extractDateTimePrimitive(first_str, second_str){
   else if (date_object_first.getUTCFullYear() !== date_object_second.getUTCFullYear()) {
     flag = 6;
   }
-  // console.log(date_diff);
   return flag;
 }
 
 // UTC time
 // YYYY-MM-DDTHH:MM:SS(,MS)
 function parseDateTime(input_str, flag) {
-  let time_splited = input_str.split('T');
+  let time_splited = input_str.toISOString().split('T');
   let date_str = time_splited[0];
   let time_str = time_splited[1];
   let splited_date_str = date_str.split('-');

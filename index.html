@@ -21,9 +21,13 @@
   <script type="text/javascript">
     // 2つ入力して差分を取得
     $('input:button').on('click', function(){
-      console.log($('input:text').val());
-      let flag = extractDateTimePrimitive($('#first_text_input').val(), $('#second_text_input').val());
-      let result_datetime = parseDateTime($('#first_text_input').val(), flag);
+      const first_date_input = new Date($('#first_text_input').val());
+      const second_date_input = new Date($('#second_text_input').val());
+
+      console.log(first_date_input, second_date_input);
+
+      let flag = extractDateTimePrimitive(first_date_input, second_date_input);
+      let result_datetime = parseDateTime(first_date_input, flag);
       $('#output_range').text(result_datetime);
     })
   </script>
