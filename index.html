@@ -22,8 +22,9 @@
     // 2つ入力して差分を取得
     $('input:button').on('click', function(){
       console.log($('input:text').val());
-      let result = extractDateTimePrimitive($('#first_text_input').val(), $('#second_text_input').val());
-      $('#output_range').text(result);
+      let flag = extractDateTimePrimitive($('#first_text_input').val(), $('#second_text_input').val());
+      let result_datetime = parseDateTime($('#first_text_input').val(), flag);
+      $('#output_range').text(result_datetime);
     })
   </script>
 </html>

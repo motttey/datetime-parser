@@ -23,13 +23,39 @@ function extractDateTimePrimitive(first_str, second_str){
   }
   else if (date_object_first.getUTCFullYear() !== date_object_second.getUTCFullYear()) {
     flag = 6;
-    alert("diff");
   }
   // console.log(date_diff);
   return flag;
 }
 
-function parseDateTime(flag) {
-  // var time = parseInt(date[date.length-2], 10) + "." + parseInt(date[date.length-1], 10);
-  // return time;
+// UTC time
+// YYYY-MM-DDTHH:MM:SS(,MS)
+function parseDateTime(input_str, flag) {
+  let time_splited = input_str.split('T');
+  let date_str = time_splited[0];
+  let time_str = time_splited[1];
+  let splited_date_str = date_str.split('-');
+  let splited_time_str = time_str.split(':');
+
+  if (flag === 0){
+    return "." + parseInt(splited_time_str[splited_time_str.length-1]);
+  }
+  else if (flag === 1){
+    return parseInt(splited_time_str[splited_time_str.length-2]) + "." + parseInt(splited_time_str[splited_time_str.length-1]);
+  }
+  else if (flag === 2){
+    return parseInt(splited_time_str[0]) + ":" + parseInt(splited_time_str[splited_time_str.length-2]);
+  }
+  else if (flag === 3){
+    return date_str + ":" + parseInt(splited_time_str[0]);
+  }
+  else if (flag === 4){
+    return parseInt(splited_date_str[splited_date_str.length-2]) + "-" + parseInt(splited_date_str.length-1);
+  }
+  else if (flag === 5){
+    return parseInt(splited_date_str[0]) + "-" + parseInt(splited_date_str.length-2);
+  }
+  else if(flag === 6){
+    return parseInt(splited_date_str[0]);
+  }
 }
